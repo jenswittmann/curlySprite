@@ -13,7 +13,7 @@
 		$col: 0;
 		$row: 0; 
 		@for $i from 1 through 100 {
-			#{($i/$end)*100}% {  background-position: -#{$col*$width}px -#{$row*$height}px ; }
+			#{($i/$end)*100}% {  background-position: -#{$col*$width}px -#{$row*$height}px; }
 			$col: $col+1;
 			@if $col == $cols {
 				$col: 0;
@@ -34,6 +34,6 @@
 	background: url(curl.png);
 	
 	&.move {
-		@include animateSprite(fall, 4, 10, 10, 100, 250, 250, false, animation-nut-fall-5 4s forwards);		
+		@include animateSprite(fall, 100/25, 10, 10, 100, 250, 250, false, '');		
 	}
 }
