@@ -1,0 +1,39 @@
+@mixin animateSprite ($name, $seconds, $cols, $rows, $end, $width, $height, $loop, $animation) {
+	
+	$infinite: 'forwards';		
+	@if $loop == loop {
+		$infinite: infinite;
+	}
+	
+	animation: #{$name}-#{$cols}x#{$rows} #{$seconds}s steps(1) #{$infinite}, #{$animation};
+	width: #{$width}px;
+	height: #{$height}px;	
+	
+	@keyframes #{$name}-#{$cols}x#{$rows} {		
+		$col: 0;
+		$row: 0; 
+		@for $i from 1 through 100 {
+			#{($i/$end)*100}% {  background-position: -#{$col*$width}px -#{$row*$height}px ; }
+			$col: $col+1;
+			@if $col == $cols {
+				$col: 0;
+				$row: $row+1;
+			}
+			@if (#{$row}-1*$cols+$col) == $end+1 and not $loop == loop {
+				$col: 0;
+				$row: 0;
+			}
+		}
+	}	
+	
+}
+
+.curl {
+	width: 250px;
+	height: 250px;	
+	background: url(curl.png);
+	
+	&.move {
+		@include animateSprite(fall, 4, 10, 10, 100, 250, 250, false, animation-nut-fall-5 4s forwards);		
+	}
+}
