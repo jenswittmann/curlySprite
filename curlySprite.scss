@@ -67,13 +67,8 @@
 	@keyframes #{$name}-#{$cols}x#{$rows} {		
 		$col: 0;
 		$row: 0; 
-<<<<<<< HEAD
 		@for $i from 1 through $end {
 			#{(100*$i)/$end}% {  background-position: -#{$col*$width}px -#{$row*$height}px; }
-=======
-		@for $i from 1 through 100 {
-			#{($i/$end)*100}% {  background-position: -#{$col*$width}px -#{$row*$height}px; }
->>>>>>> 14533c959a361b464fa2133a2d25f86050bed8f8
 			$col: $col+1;
 			@if $col == $cols {
 				$col: 0;
