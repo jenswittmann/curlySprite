@@ -5,12 +5,13 @@
 		$infinite: infinite;
 	}
 	
+	width: #{$width}px;
+	height: #{$height}px;
+	
 	-webkit-animation: #{$name}-#{$cols}x#{$rows} #{$seconds}s steps(1) #{$infinite} #{$animation};
 	-moz-animation: #{$name}-#{$cols}x#{$rows} #{$seconds}s steps(1) #{$infinite} #{$animation};
 	-o-animation: #{$name}-#{$cols}x#{$rows} #{$seconds}s steps(1) #{$infinite} #{$animation};
-	animation: #{$name}-#{$cols}x#{$rows} #{$seconds}s steps(1) #{$infinite} #{$animation};
-	width: #{$width}px;
-	height: #{$height}px;	
+	animation: #{$name}-#{$cols}x#{$rows} #{$seconds}s steps(1) #{$infinite} #{$animation};	
 	
 	@-webkit-keyframes #{$name}-#{$cols}x#{$rows} {		
 		$col: 0;
