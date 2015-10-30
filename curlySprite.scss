@@ -5,70 +5,15 @@
 		$infinite: infinite;
 	}
 	
+	animation: #{$name}-#{$cols}x#{$rows} #{$seconds}s steps(1) #{$infinite}, #{$animation};
 	width: #{$width}px;
-	height: #{$height}px;
-	
-	-webkit-animation: #{$name}-#{$cols}x#{$rows} #{$seconds}s steps(1) #{$infinite} #{$animation};
-	-moz-animation: #{$name}-#{$cols}x#{$rows} #{$seconds}s steps(1) #{$infinite} #{$animation};
-	-o-animation: #{$name}-#{$cols}x#{$rows} #{$seconds}s steps(1) #{$infinite} #{$animation};
-	animation: #{$name}-#{$cols}x#{$rows} #{$seconds}s steps(1) #{$infinite} #{$animation};	
-	
-	@-webkit-keyframes #{$name}-#{$cols}x#{$rows} {		
-		$col: 0;
-		$row: 0; 
-		@for $i from 1 through $end {
-			#{(100*$i)/$end}% {  background-position: -#{$col*$width}px -#{$row*$height}px; }
-			$col: $col+1;
-			@if $col == $cols {
-				$col: 0;
-				$row: $row+1;
-			}
-			@if (#{$row}-1*$cols+$col) == $end+1 and not $loop == loop {
-				$col: 0;
-				$row: 0;
-			}
-		}
-	}	
-	
-	@-moz-keyframes #{$name}-#{$cols}x#{$rows} {		
-		$col: 0;
-		$row: 0; 
-		@for $i from 1 through $end {
-			#{(100*$i)/$end}% {  background-position: -#{$col*$width}px -#{$row*$height}px; }
-			$col: $col+1;
-			@if $col == $cols {
-				$col: 0;
-				$row: $row+1;
-			}
-			@if (#{$row}-1*$cols+$col) == $end+1 and not $loop == loop {
-				$col: 0;
-				$row: 0;
-			}
-		}
-	}	
-	
-	@-o-keyframes #{$name}-#{$cols}x#{$rows} {		
-		$col: 0;
-		$row: 0; 
-		@for $i from 1 through $end {
-			#{(100*$i)/$end}% {  background-position: -#{$col*$width}px -#{$row*$height}px; }
-			$col: $col+1;
-			@if $col == $cols {
-				$col: 0;
-				$row: $row+1;
-			}
-			@if (#{$row}-1*$cols+$col) == $end+1 and not $loop == loop {
-				$col: 0;
-				$row: 0;
-			}
-		}
-	}		
+	height: #{$height}px;	
 	
 	@keyframes #{$name}-#{$cols}x#{$rows} {		
 		$col: 0;
 		$row: 0; 
-		@for $i from 1 through $end {
-			#{(100*$i)/$end}% {  background-position: -#{$col*$width}px -#{$row*$height}px; }
+		@for $i from 1 through 100 {
+			#{($i/$end)*100}% {  background-position: -#{$col*$width}px -#{$row*$height}px ; }
 			$col: $col+1;
 			@if $col == $cols {
 				$col: 0;
@@ -89,6 +34,6 @@
 	background: url(curl.png);
 	
 	&.move {
-		@include animateSprite(fall, 100/25, 10, 10, 100, 250, 250, false, '');		
+		@include animateSprite(fall, 4, 10, 10, 100, 250, 250, false, animation-nut-fall-5 4s forwards);		
 	}
 }
